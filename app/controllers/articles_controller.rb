@@ -1,10 +1,13 @@
 class ArticlesController < ApplicationController
-  def new
-    @article = Article.new
-  end
+
+  http_basic_authenticate_with name: "asif", password: "1234", except: [:index, :show]
 
   def index
     @articles = Article.all
+  end
+
+  def new
+    @article = Article.new
   end
 
   def create
